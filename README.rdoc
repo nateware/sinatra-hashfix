@@ -1,0 +1,49 @@
+= Sinatra::Hashfix - Use HashWithIndifferentAccess for Sinatra params
+
+Get your hash fix!  Many people have been confused by Sinatra's partial implementation
+of a Rails style params[] hash:
+
+http://groups.google.com/group/sinatrarb/browse_thread/thread/af4b40e610d4daf/bc953ca6d118a882
+
+This gem replaces the default Sinatra params hash with HashWithIndifferentAccess (from ActiveSupport).
+
+== Installation
+
+You know this tune:
+
+  gem install sinatra-hashfix
+  
+If you are using a classic (one-file) Sinatra app, just add:
+
+  require 'sinatra/hashfix'
+
+If you are using a modular Sinatra::Base app, you must also add:
+
+  register Sinatra::Hashfix
+  
+To the top of your application class.
+  
+== Example
+
+Request:
+
+  /my/route?foo=1
+
+Without:
+
+  params[:foo]            # 1
+  params.has_key?(:foo)   # false
+  params.has_key?('foo')  # true
+
+With:
+
+  params[:foo]            # 1
+  params.has_key?(:foo)   # true
+  params.has_key?('foo')  # true
+
+It's the little things in life that make me happy.
+
+== Author
+
+Copyright (c) 2010 {Nate Wiger}[http://nate.wiger.org].  All Rights Reserved.
+Released under the {Artistic License}[http://www.opensource.org/licenses/artistic-license-2.0.php].
