@@ -1,5 +1,7 @@
 = Sinatra::Hashfix - Use HashWithIndifferentAccess for Sinatra params
 
+Get your hash fix! 
+
 Sinatra only partially implements a Rails style params[] hash, which can lead to confusing
 behavior, since methods like has_key?() and delete() don't work as you'd expect:
 
