@@ -1,11 +1,12 @@
 = Sinatra::Hashfix - Use HashWithIndifferentAccess for Sinatra params
 
-Get your hash fix!  Many people have been confused by Sinatra's partial implementation
-of a Rails style params[] hash:
+Sinatra only partially implements a Rails style params[] hash, which can lead to confusing
+behavior, since methods like has_key?() and delete() don't work as you'd expect:
 
 http://groups.google.com/group/sinatrarb/browse_thread/thread/af4b40e610d4daf/bc953ca6d118a882
 
 This gem replaces the default Sinatra params hash with HashWithIndifferentAccess (from ActiveSupport).
+Purists may balk, but this is all about avoiding bugs.
 
 == Installation
 
